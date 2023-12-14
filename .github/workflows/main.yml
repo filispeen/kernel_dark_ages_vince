@@ -1,9 +1,7 @@
 name: Build Linux Kernel
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   build_kernel:
@@ -28,8 +26,7 @@ jobs:
       run: |
         export ARCH=arm64
         export CROSS_COMPILE=aarch64-linux-gnu-
-        export LOCALVERSION=-vince
-        make vince_defconfig
+        make vince_nethunter_defconfig
 
     - name: Build Linux Kernel
       run: make -j$(nproc)
